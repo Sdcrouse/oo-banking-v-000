@@ -24,7 +24,7 @@ class Transfer
       receiver.deposit(self.amount)
       self.status = "complete"
     else 
-      "Transaction has already been completed or rejected. Please make a new transfer."
+      "Transaction has already been completed. Please make a new transfer."
     end
   end 
   
@@ -33,7 +33,8 @@ class Transfer
     if self.status == "complete" # A transfer has occurred.
       self.class.new(self.receiver, self.sender, self.amount).execute_transaction 
       self.status = "reversed"
-    else # No transfer has occurred yet, and therefore cannot be reversed.
+    else # Either no transfer has occurred yet, and therefore cannot be reversed,
+         # or the transaction has ALREADY been reversed.
       "Error. There is no transfer to be reversed, or transfer has already been reversed."
     end
     #binding.pry
