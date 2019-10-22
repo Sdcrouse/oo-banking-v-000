@@ -10,7 +10,7 @@ class Transfer
     @status = "pending"
   end
   
-  def valid? # Arguably, this ought to return true even if the receiver has no money at all.
+  def valid?
     self.sender.valid? && self.receiver.valid? && self.amount <= self.sender.balance
   end 
   
