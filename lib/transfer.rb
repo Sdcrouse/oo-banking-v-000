@@ -19,7 +19,7 @@ class Transfer
       self.status = "rejected"
       "Transaction rejected. Please check your account balance."
     elsif self.status == "pending"
-      sender.balance -= self.amount # This could probably be refactored into a #withdraw method on the BankAccount object.
+      sender.withdraw(self.amount)
       receiver.deposit(self.amount)
       self.status = "complete"
     else 
